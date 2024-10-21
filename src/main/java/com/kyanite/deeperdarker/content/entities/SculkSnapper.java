@@ -110,8 +110,8 @@ public class SculkSnapper extends TamableAnimal {
                 Enchantment enchantment1 = enchantments.remove(this.random.nextInt(enchantments.size()));
                 Enchantment enchantment2 = enchantments.get(this.random.nextInt(enchantments.size()));
 
-                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(registry.createIntrusiveHolder(enchantment1), this.random.nextInt(1, enchantment1.getMaxLevel() + 1)));
-                if(this.random.nextFloat() < 0.2f) book.enchant(registry.createIntrusiveHolder(enchantment2), BiasedToBottomInt.of(1, enchantment2.getMaxLevel()).sample(this.random));
+                ItemStack book = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(registry.wrapAsHolder(enchantment1), this.random.nextInt(1, enchantment1.getMaxLevel() + 1)));
+                if(this.random.nextFloat() < 0.2f) book.enchant(registry.wrapAsHolder(enchantment2), BiasedToBottomInt.of(1, enchantment2.getMaxLevel()).sample(this.random));
                 this.level().addFreshEntity(new ItemEntity(this.level(), this.blockPosition().getX(), this.blockPosition().getY(), this.blockPosition().getZ(), book));
                 droppedBooks++;
             }
