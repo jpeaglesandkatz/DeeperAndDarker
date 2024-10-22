@@ -1,0 +1,22 @@
+{
+  "type": "mekanism:sawing",
+  "input": {
+    "ingredient": {
+      "tag": "deeperdarker:blooming_stems"
+    }
+  },
+  "mainOutput": {
+    "count": 6,
+    "item": "deeperdarker:bloom_planks"
+  },
+  "secondaryChance": 0.25,
+  "secondaryOutput": {
+    "item": "mekanism:sawdust"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["mekanism"]
+    }
+  ]
+}
