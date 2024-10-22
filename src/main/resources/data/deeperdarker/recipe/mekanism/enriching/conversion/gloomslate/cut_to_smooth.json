@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "deeperdarker:cut_gloomslate"
+    }
+  },
+  "output": {
+    "item": "deeperdarker:smooth_gloomslate"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["mekanism"]
+    }
+  ]
+}

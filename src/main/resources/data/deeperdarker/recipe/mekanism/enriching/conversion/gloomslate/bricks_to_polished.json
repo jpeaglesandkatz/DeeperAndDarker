@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "deeperdarker:gloomslate_bricks"
+    }
+  },
+  "output": {
+    "item": "deeperdarker:polished_gloomslate"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": ["mekanism"]
+    }
+  ]
+}
