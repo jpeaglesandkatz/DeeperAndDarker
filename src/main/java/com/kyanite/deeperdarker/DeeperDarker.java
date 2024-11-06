@@ -17,6 +17,7 @@ import com.kyanite.deeperdarker.util.DDCreativeTab;
 import com.kyanite.deeperdarker.world.DDFeatures;
 import com.kyanite.deeperdarker.world.otherside.OthersideDimension;
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -31,6 +32,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -72,6 +74,7 @@ public class DeeperDarker {
         eventBus.addListener(this::registerPayloads);
         eventBus.addListener(this::registerAttributes);
         eventBus.addListener(this::registerSpawnPlacements);
+        eventBus.addListener(this::registerDimensionEffects);
 
         container.registerConfig(ModConfig.Type.COMMON, DeeperDarkerConfig.SPEC);
     }
@@ -132,6 +135,10 @@ public class DeeperDarker {
         event.register(DDEntities.SCULK_SNAPPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(DDEntities.SHATTERED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(DDEntities.SLUDGE.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+    }
+
+    private void registerDimensionEffects(final RegisterDimensionSpecialEffectsEvent event) {
+        event.register(OthersideDimension.OTHERSIDE_EFFECTS, new DimensionSpecialEffects.NetherEffects());
     }
 
     public static ResourceLocation rl(String path) {
