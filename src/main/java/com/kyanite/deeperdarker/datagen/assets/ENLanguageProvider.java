@@ -160,8 +160,7 @@ public class ENLanguageProvider extends LanguageProvider {
         StringBuilder builder = new StringBuilder(key.substring(0, 1).toUpperCase() + key.substring(1));
         for(int i = 1; i < builder.length(); i++) {
             if(builder.charAt(i) == '_') {
-                builder.deleteCharAt(i);
-                builder.replace(i, i + 1, " " + Character.toUpperCase(builder.charAt(i)));
+                builder.replace(i, i + 2, " " + Character.toUpperCase(builder.charAt(i + 1)));
             }
         }
 
